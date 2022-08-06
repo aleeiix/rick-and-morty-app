@@ -1,0 +1,9 @@
+<section class="grid grid-cols-3 gap-4">
+  <article *ngFor="let item of items" class="h-80">
+    <app-home-item
+      [link]="item.link"
+      [text]="item.text"
+      [imageUrl]="item.imageUrl"
+    ></app-home-item>
+  </article>
+</section>

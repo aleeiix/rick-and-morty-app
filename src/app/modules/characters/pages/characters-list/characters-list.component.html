@@ -1,0 +1,21 @@
+<section></section>
+
+<section class="grid grid-cols-4 gap-6">
+  <article
+    *ngFor="let character of characters$ | async"
+    class="shadow rounded-lg overflow-hidden"
+  >
+    <div
+      class="w-full h-60 rounded-lg bg-center bg-no-repeat bg-cover"
+      [style.background-image]="'url(' + character.image + ')'"
+    ></div>
+    <div class="p-4">
+      <p class="font-semibold">{{ character.name }}</p>
+      <p class="text-sm">{{ character.gender }}</p>
+      <!-- <p>{{ character.origin.name }}</p>
+      <p>{{ character.location.name }}</p> -->
+      <p class="text-sm">{{ character.species }}</p>
+      <p class="text-sm">{{ character.status }}</p>
+    </div>
+  </article>
+</section>

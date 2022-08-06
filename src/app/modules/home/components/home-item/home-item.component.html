@@ -1,0 +1,11 @@
+<a
+  [routerLink]="link"
+  class="relative w-full h-full group bg-center bg-no-repeat bg-cover"
+  [style.background-image]="'url(' + imageUrl + ')'"
+>
+  <h2
+    class="absolute inset-x-0 bottom-0 flex justify-center items-center bg-amber-500/75 text-white text-center p-2 group-hover:top-0"
+  >
+    {{ text }}
+  </h2>
+</a>
