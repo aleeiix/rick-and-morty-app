@@ -21,6 +21,7 @@ export type CharacterFilter = {
   species?: string | null;
   type?: string | null;
   gender?: string | null;
+  page?: number | null;
 };
 
 export enum StatusEnum {

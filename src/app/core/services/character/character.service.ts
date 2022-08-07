@@ -11,8 +11,7 @@ export class CharacterService {
   constructor(private characterApiService: CharacterApiService) {}
 
   getCharacters(
-    filters: CharacterFilter,
-    pagination: any
+    filters: CharacterFilter
   ): Observable<PaginationResponse<Character>> {
     return this.characterApiService.getCharacters(filters);
   }
