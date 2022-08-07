@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://rickandmortyapi.com/api',
+  rickAndMortyApiUrl: 'https://rickandmortyapi.com/api',
+  masterDataApiUrl: 'http://localhost:3000',
 };
 
 /*

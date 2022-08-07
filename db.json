@@ -1,0 +1,13 @@
+{
+    "statuses": [
+      { "id": 1, "name": "Alive"},
+      { "id": 2, "name": "Dead"},
+      { "id": 3, "name": "Unknown"}
+    ],
+    "genders": [
+      { "id": 1, "name": "Female"},
+      { "id": 2, "name": "Male"},
+      { "id": 3, "name": "Genderless"},
+      { "id": 4, "name": "Unknown"}
+    ]
+  }

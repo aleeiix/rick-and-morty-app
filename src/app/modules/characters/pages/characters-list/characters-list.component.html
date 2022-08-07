@@ -1,4 +1,64 @@
-<section></section>
+<section class="shadow rounded-lg overflow-hidden p-4 mb-6">
+  <form class="grid grid-cols-3 gap-4" [formGroup]="filtersForm">
+    <span class="flex flex-col">
+      <label for="name" class="text-xs text-gray-700 mb-1">Name:</label>
+      <input
+        id="name"
+        class="text-sm border rounded-lg p-2"
+        type="text"
+        formControlName="name"
+      />
+    </span>
+
+    <span class="flex flex-col">
+      <label for="status" class="text-xs text-gray-700 mb-1">Status:</label>
+      <select
+        id="status"
+        class="h-full text-sm border rounded-lg bg-transparent p-2"
+        formControlName="status"
+      >
+        <option value=""></option>
+        <option *ngFor="let status of statuses$ | async" [value]="status.id">
+          {{ status.name }}
+        </option>
+      </select>
+    </span>
+
+    <span class="flex flex-col">
+      <label for="species" class="text-xs text-gray-700 mb-1">Species:</label>
+      <input
+        id="species"
+        class="text-sm border rounded-lg p-2"
+        type="text"
+        formControlName="species"
+      />
+    </span>
+
+    <span class="flex flex-col">
+      <label for="type" class="text-xs text-gray-700 mb-1">Type:</label>
+      <input
+        id="type"
+        class="text-sm border rounded-lg p-2"
+        type="text"
+        formControlName="type"
+      />
+    </span>
+
+    <span class="flex flex-col">
+      <label for="gender" class="text-xs text-gray-700 mb-1">Gender:</label>
+      <select
+        id="gender"
+        class="h-full text-sm border rounded-lg bg-transparent p-2"
+        formControlName="gender"
+      >
+        <option value=""></option>
+        <option *ngFor="let gender of genders$ | async" [value]="gender.id">
+          {{ gender.name }}
+        </option>
+      </select>
+    </span>
+  </form>
+</section>
 
 <section class="grid grid-cols-4 gap-6">
   <article
@@ -10,12 +70,75 @@
       [style.background-image]="'url(' + character.image + ')'"
     ></div>
     <div class="p-4">
-      <p class="font-semibold">{{ character.name }}</p>
-      <p class="text-sm">{{ character.gender }}</p>
-      <!-- <p>{{ character.origin.name }}</p>
-      <p>{{ character.location.name }}</p> -->
-      <p class="text-sm">{{ character.species }}</p>
-      <p class="text-sm">{{ character.status }}</p>
+      <div class="flex justify-between items-center">
+        <p class="font-semibold truncate">
+          {{ character.name }}
+        </p>
+
+        <ng-container [ngSwitch]="character.gender">
+          <img
+            *ngSwitchCase="GenderEnum.MALE"
+            src="/assets/svg/gender-male.svg"
+            alt="Male"
+          />
+          <img
+            *ngSwitchCase="GenderEnum.FEMALE"
+            src="/assets/svg/gender-female.svg"
+            alt="Female"
+          />
+          <img
+            *ngSwitchCase="GenderEnum.GENDERLESS"
+            src="/assets/svg/gender-agender.svg"
+            alt="Genderless"
+          />
+          <img
+            *ngSwitchCase="GenderEnum.UNKNOWN"
+            src="/assets/svg/question-mark.svg"
+            alt="Unknown"
+          />
+        </ng-container>
+      </div>
+
+      <p class="text-xs mb-2">{{ character.origin.name }}</p>
+
+      <div class="flex justify-between">
+        <p class="text-sm text-gray-700">Species:</p>
+        <p class="text-sm">{{ character.species }}</p>
+      </div>
+
+      <div class="flex justify-between">
+        <p class="text-sm text-gray-700">Status:</p>
+        <p class="text-sm">{{ character.status }}</p>
+      </div>
     </div>
   </article>
+</section>
+
+<section class="flex justify-center items-center my-4">
+  <button
+    class="h-10 w-10 flex justify-center items-center rounded-full bg-amber-500"
+  >
+    <img
+      class="h-6 w-6"
+      src="/assets/svg/chevron-left.svg"
+      alt="Chevron left"
+    />
+  </button>
+
+  <button
+    *ngFor="let page of pagination.pages"
+    class="h-10 w-10 flex justify-center items-center rounded-full bg-amber-500"
+  >
+    <p class="h-6 w-6">{{ page }}</p>
+  </button>
+
+  <button
+    class="h-10 w-10 flex justify-center items-center rounded-full bg-amber-500"
+  >
+    <img
+      class="h-6 w-6"
+      src="/assets/svg/chevron-right.svg"
+      alt="Chevron right"
+    />
+  </button>
 </section>
